@@ -7,6 +7,8 @@
 .image {
   max-width: 70px;
   margin: 0 4px;
+  /* Aspect ratio for Safari */
+  object-fit: cover;
 }
 
 .image:hover {
