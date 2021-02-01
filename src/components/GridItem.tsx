@@ -20,7 +20,6 @@ function GridItem(
   const handleItemClick: MouseEventHandler<HTMLDivElement> = (e) => {
     onClick?.(e, item);
   };
-
   return (
     <div
       style={{ display: "flex" }}
