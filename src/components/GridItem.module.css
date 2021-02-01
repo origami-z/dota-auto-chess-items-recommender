@@ -1,0 +1,27 @@
+.item {
+  box-sizing: border-box;
+  margin: 4px;
+  min-width: 150px;
+}
+
+.image {
+  max-width: 70px;
+  margin: 0 4px;
+}
+
+.image:hover {
+  cursor: pointer;
+}
+
+.thumbnailImage {
+  width: 16px;
+  margin: 0 4px;
+}
+
+.thumbnailImage:hover {
+  cursor: pointer;
+}
+
+.gridItemHighlight {
+  box-shadow: 0 0 0 1px yellow;
+}

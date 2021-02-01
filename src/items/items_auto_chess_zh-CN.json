@@ -477,7 +477,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/dagon_2_lg.png",
     "id": 201,
-    "tier": 3
+    "tier": 3,
+    "hidden": true
   },
   {
     "localized_name": "Dagon Lv.3",
@@ -489,7 +490,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/dagon_3_lg.png",
     "id": 202,
-    "tier": 3
+    "tier": 3,
+    "hidden": true
   },
   {
     "localized_name": "Dagon Lv.4",
@@ -501,7 +503,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/dagon_4_lg.png",
     "id": 203,
-    "tier": 3
+    "tier": 3,
+    "hidden": true
   },
   {
     "localized_name": "Dagon Lv.5",
@@ -513,7 +516,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/dagon_5_lg.png",
     "id": 204,
-    "tier": 3
+    "tier": 3,
+    "hidden": true
   },
   {
     "localized_name": "Refresher Orb",
