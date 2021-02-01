@@ -1,3 +1,7 @@
+# Dota 2 Auto Chess Items Recommender
+
+This project aims to help players not familiar with items combination the advice for optimizing items.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
