@@ -13,9 +13,10 @@ function GridItem(
       item: DACItem
     ) => void;
     highlight?: boolean;
+    hideDetails?: boolean;
   } & Omit<DOMAttributes<HTMLDivElement>, "onClick">
 ) {
-  const { item, idToItemMap, onClick, highlight } = props;
+  const { item, idToItemMap, onClick, highlight, hideDetails } = props;
 
   const handleItemClick: MouseEventHandler<HTMLDivElement> = (e) => {
     onClick?.(e, item);
@@ -25,6 +26,7 @@ function GridItem(
       style={{ display: "flex" }}
       className={cn(classes.item, {
         [classes.gridItemHighlight]: highlight,
+        [classes.itemHideDetail]: hideDetails,
       })}
       onClick={handleItemClick}
     >
@@ -33,27 +35,29 @@ function GridItem(
         src={item.url_image}
         alt={item.localized_name + "_image"}
       />
-      <div>
-        <div>{item.localized_name_zh}</div>
+      {!hideDetails && (
         <div>
-          {item.recipe.map((id: number, index: number) => {
-            const mappedItem = idToItemMap.get(id) as DACItem;
+          <div>{item.localized_name_zh}</div>
+          <div>
+            {item.recipe.map((id: number, index: number) => {
+              const mappedItem = idToItemMap.get(id) as DACItem;
 
-            return (
-              <img
-                className={classes.thumbnailImage}
-                src={mappedItem.url_image}
-                alt={mappedItem.localized_name + "_image"}
-                key={`thumbnail-image-${index}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onClick?.(e, mappedItem);
-                }}
-              />
-            );
-          })}
+              return (
+                <img
+                  className={classes.thumbnailImage}
+                  src={mappedItem.url_image}
+                  alt={mappedItem.localized_name + "_image"}
+                  key={`thumbnail-image-${index}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClick?.(e, mappedItem);
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
