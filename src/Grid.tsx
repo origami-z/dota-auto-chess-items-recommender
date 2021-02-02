@@ -122,8 +122,8 @@ function Grid() {
       </div>
       <div>
         <ActionGroup onAction={handleAction}>
-          <Item key="optimise">Optimise</Item>
-          <Item key="clear">Clear</Item>
+          <Item key="optimise">Show Available</Item>
+          <Item key="clear">Hide</Item>
         </ActionGroup>
       </div>
       {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
