@@ -12,6 +12,7 @@ function GridItem(
       event: React.MouseEvent<HTMLDivElement, MouseEvent>,
       item: DACExtendedItem
     ) => void;
+    selected?: boolean;
     highlight?: boolean;
     available?: boolean;
     hideDetails?: boolean;
@@ -21,6 +22,7 @@ function GridItem(
     item,
     idToItemMap,
     onClick,
+    selected,
     highlight,
     available,
     hideDetails,
@@ -33,6 +35,7 @@ function GridItem(
     <div
       style={{ display: "flex" }}
       className={cn(classes.item, {
+        [classes.gridItemSelected]: selected,
         [classes.gridItemHighlight]: highlight,
         [classes.gridItemAvailable]: available,
         [classes.itemHideDetail]: hideDetails,

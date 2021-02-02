@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Provider theme={darkTheme}>
-      <RadioGroup
+      {/* <RadioGroup
         label="Display mode"
         orientation="horizontal"
         value={displayMode}
@@ -19,7 +19,7 @@ function App() {
       >
         <Radio value="Table">Table</Radio>
         <Radio value="Grid">Grid</Radio>
-      </RadioGroup>
+      </RadioGroup> */}
       <div className="App">
         <h1>Dota Auto Chess Items</h1>
         {displayMode === "Table" ? <Table /> : <Grid />}

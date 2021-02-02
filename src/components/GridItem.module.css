@@ -28,12 +28,16 @@
   cursor: pointer;
 }
 
-.gridItemHighlight {
-  box-shadow: 0 0 0 1px yellow;
+.gridItemAvailable {
+  box-shadow: 0 0 0 1px green;
 }
 
-.gridItemAvailable {
-  border: 1px solid green;
+.gridItemHighlight {
+  box-shadow: 0 0 0 1px yellowgreen;
+}
+
+.gridItemSelected {
+  box-shadow: 0 0 0 2px yellow;
 }
 
 .tier1 {

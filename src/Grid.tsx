@@ -1,5 +1,5 @@
 import { ReactText, useMemo, useState } from "react";
-import { ActionGroup, Item } from "@adobe/react-spectrum";
+import { ActionGroup, Item, ToggleButton } from "@adobe/react-spectrum";
 
 import itemsDataCN from "./items/items_auto_chess_zh-CN.json";
 import { DACExtendedItem } from "./items/item";
@@ -58,7 +58,8 @@ function Grid() {
     null
   );
   const [obtainedItemIds, setObtainedItemIds] = useState<number[]>([]);
-  const [disassembledItemIds, setOptimizedItemIds] = useState<number[]>([]);
+  const [showPossibility, setShowPossibility] = useState(false);
+  // const [disassembledItemIds, setOptimizedItemIds] = useState<number[]>([]);
 
   const tierList = [1, 2, 3, 4, 5];
 
@@ -95,13 +96,13 @@ function Grid() {
         newIds.splice(index, 1);
         setObtainedItemIds(newIds);
       }
-    } else if (action === "optimise") {
-      const newItems = getOptimizedItemIds(obtainedItemIds, idToItemMap);
-      setOptimizedItemIds(newItems);
-    } else if (action === "clear") {
-      setOptimizedItemIds([]);
     }
   };
+
+  const disassembledItemIds = useMemo(
+    () => getOptimizedItemIds(obtainedItemIds, idToItemMap),
+    [idToItemMap, obtainedItemIds]
+  );
 
   const renderItemsFromId = (ids: number[], emptyMessage?: string) => {
     if (ids.length) {
@@ -123,6 +124,11 @@ function Grid() {
     }
   };
 
+  const togglePossibility = (newValue: boolean) => {
+    setSelectedItem(null);
+    setShowPossibility(newValue);
+  };
+
   return (
     <div>
       <h4>Obtained items</h4>
@@ -130,17 +136,16 @@ function Grid() {
         {renderItemsFromId(obtainedItemIds, "Nothing yet. Good luck. 🥳")}
       </div>
       <div>
-        <ActionGroup onAction={handleAction}>
-          <Item key="optimise">Show Possibility</Item>
-          <Item key="clear">Hide</Item>
-        </ActionGroup>
+        <ToggleButton isEmphasized onChange={togglePossibility}>
+          {showPossibility ? "Hide" : "Show"} Possibility
+        </ToggleButton>
       </div>
       {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
         {renderItemsFromId(disassembledItemIds)}
       </div> */}
-      <h4>Select items below</h4>
+      <h4>Select an item below</h4>
       <div>
-        <ActionGroup onAction={handleAction}>
+        <ActionGroup onAction={handleAction} isDisabled={selectedItem === null}>
           <Item key="add">Add</Item>
           <Item key="remove">Remove</Item>
         </ActionGroup>
@@ -157,14 +162,12 @@ function Grid() {
                   onClick={handleItemClick}
                   item={item}
                   idToItemMap={idToItemMap}
-                  highlight={
-                    item.id === selectedItem?.id ||
-                    item.extendedRecipe.includes(selectedItem?.id || 0)
+                  selected={item.id === selectedItem?.id}
+                  highlight={item.extensions.includes(selectedItem?.id || 0)}
+                  available={
+                    showPossibility &&
+                    canAssembleItem(disassembledItemIds, item.extendedRecipe)
                   }
-                  available={canAssembleItem(
-                    disassembledItemIds,
-                    item.extendedRecipe
-                  )}
                 />
               );
             })}
