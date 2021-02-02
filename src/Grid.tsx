@@ -131,7 +131,7 @@ function Grid() {
       </div>
       <div>
         <ActionGroup onAction={handleAction}>
-          <Item key="optimise">Show Available</Item>
+          <Item key="optimise">Show Possibility</Item>
           <Item key="clear">Hide</Item>
         </ActionGroup>
       </div>
