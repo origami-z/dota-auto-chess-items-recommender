@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/dota-auto-chess-items-recommender/static/css/main.50ec26aa.chunk.css",
-    "main.js": "/dota-auto-chess-items-recommender/static/js/main.d8241c0b.chunk.js",
-    "main.js.map": "/dota-auto-chess-items-recommender/static/js/main.d8241c0b.chunk.js.map",
-    "runtime-main.js": "/dota-auto-chess-items-recommender/static/js/runtime-main.5902bd0c.js",
-    "runtime-main.js.map": "/dota-auto-chess-items-recommender/static/js/runtime-main.5902bd0c.js.map",
-    "static/css/2.993ff5a0.chunk.css": "/dota-auto-chess-items-recommender/static/css/2.993ff5a0.chunk.css",
-    "static/js/2.2aa5d1a7.chunk.js": "/dota-auto-chess-items-recommender/static/js/2.2aa5d1a7.chunk.js",
-    "static/js/2.2aa5d1a7.chunk.js.map": "/dota-auto-chess-items-recommender/static/js/2.2aa5d1a7.chunk.js.map",
-    "static/js/3.e137c0f0.chunk.js": "/dota-auto-chess-items-recommender/static/js/3.e137c0f0.chunk.js",
-    "static/js/3.e137c0f0.chunk.js.map": "/dota-auto-chess-items-recommender/static/js/3.e137c0f0.chunk.js.map",
+    "main.css": "/dota-auto-chess-items-recommender/static/css/main.f62e9425.chunk.css",
+    "main.js": "/dota-auto-chess-items-recommender/static/js/main.27c4358b.chunk.js",
+    "main.js.map": "/dota-auto-chess-items-recommender/static/js/main.27c4358b.chunk.js.map",
+    "runtime-main.js": "/dota-auto-chess-items-recommender/static/js/runtime-main.a2bb200b.js",
+    "runtime-main.js.map": "/dota-auto-chess-items-recommender/static/js/runtime-main.a2bb200b.js.map",
+    "static/css/2.76e3016f.chunk.css": "/dota-auto-chess-items-recommender/static/css/2.76e3016f.chunk.css",
+    "static/js/2.648c0e89.chunk.js": "/dota-auto-chess-items-recommender/static/js/2.648c0e89.chunk.js",
+    "static/js/2.648c0e89.chunk.js.map": "/dota-auto-chess-items-recommender/static/js/2.648c0e89.chunk.js.map",
+    "static/js/3.43990510.chunk.js": "/dota-auto-chess-items-recommender/static/js/3.43990510.chunk.js",
+    "static/js/3.43990510.chunk.js.map": "/dota-auto-chess-items-recommender/static/js/3.43990510.chunk.js.map",
     "index.html": "/dota-auto-chess-items-recommender/index.html",
-    "static/css/2.993ff5a0.chunk.css.map": "/dota-auto-chess-items-recommender/static/css/2.993ff5a0.chunk.css.map",
-    "static/css/main.50ec26aa.chunk.css.map": "/dota-auto-chess-items-recommender/static/css/main.50ec26aa.chunk.css.map",
-    "static/js/2.2aa5d1a7.chunk.js.LICENSE.txt": "/dota-auto-chess-items-recommender/static/js/2.2aa5d1a7.chunk.js.LICENSE.txt"
+    "static/css/2.76e3016f.chunk.css.map": "/dota-auto-chess-items-recommender/static/css/2.76e3016f.chunk.css.map",
+    "static/css/main.f62e9425.chunk.css.map": "/dota-auto-chess-items-recommender/static/css/main.f62e9425.chunk.css.map",
+    "static/js/2.648c0e89.chunk.js.LICENSE.txt": "/dota-auto-chess-items-recommender/static/js/2.648c0e89.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5902bd0c.js",
-    "static/css/2.993ff5a0.chunk.css",
-    "static/js/2.2aa5d1a7.chunk.js",
-    "static/css/main.50ec26aa.chunk.css",
-    "static/js/main.d8241c0b.chunk.js"
+    "static/js/runtime-main.a2bb200b.js",
+    "static/css/2.76e3016f.chunk.css",
+    "static/js/2.648c0e89.chunk.js",
+    "static/css/main.f62e9425.chunk.css",
+    "static/js/main.27c4358b.chunk.js"
   ]
 }
