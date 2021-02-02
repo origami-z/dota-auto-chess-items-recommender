@@ -31,3 +31,27 @@
 .gridItemHighlight {
   box-shadow: 0 0 0 1px yellow;
 }
+
+.gridItemAvailable {
+  border: 1px solid green;
+}
+
+.tier1 {
+  color: #a8bacf;
+}
+
+.tier2 {
+  color: #5e98d7;
+}
+
+.tier3 {
+  color: #435ee5;
+}
+
+.tier4 {
+  color: #bd28ce;
+}
+
+.tier5 {
+  color: #e4af3a;
+}

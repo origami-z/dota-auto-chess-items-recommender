@@ -1,22 +1,30 @@
 import { DOMAttributes, MouseEventHandler } from "react";
 import cn from "classnames";
-import { DACItem } from "../items/item";
+import { DACExtendedItem } from "../items/item";
 
 import classes from "./GridItem.module.css";
 
 function GridItem(
   props: {
-    item: DACItem;
-    idToItemMap: Map<number, DACItem>;
+    item: DACExtendedItem;
+    idToItemMap: Map<number, DACExtendedItem>;
     onClick?: (
       event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-      item: DACItem
+      item: DACExtendedItem
     ) => void;
     highlight?: boolean;
+    available?: boolean;
     hideDetails?: boolean;
   } & Omit<DOMAttributes<HTMLDivElement>, "onClick">
 ) {
-  const { item, idToItemMap, onClick, highlight, hideDetails } = props;
+  const {
+    item,
+    idToItemMap,
+    onClick,
+    highlight,
+    available,
+    hideDetails,
+  } = props;
 
   const handleItemClick: MouseEventHandler<HTMLDivElement> = (e) => {
     onClick?.(e, item);
@@ -26,6 +34,7 @@ function GridItem(
       style={{ display: "flex" }}
       className={cn(classes.item, {
         [classes.gridItemHighlight]: highlight,
+        [classes.gridItemAvailable]: available,
         [classes.itemHideDetail]: hideDetails,
       })}
       onClick={handleItemClick}
@@ -37,10 +46,12 @@ function GridItem(
       />
       {!hideDetails && (
         <div>
-          <div>{item.localized_name_zh}</div>
+          <div className={classes[`tier${item.tier}`]}>
+            {item.localized_name_zh}
+          </div>
           <div>
             {item.recipe.map((id: number, index: number) => {
-              const mappedItem = idToItemMap.get(id) as DACItem;
+              const mappedItem = idToItemMap.get(id) as DACExtendedItem;
 
               return (
                 <img

@@ -1,29 +1,28 @@
-import { ReactText, useEffect, useMemo, useState } from "react";
+import { ReactText, useMemo, useState } from "react";
 import { ActionGroup, Item } from "@adobe/react-spectrum";
 
 import itemsDataCN from "./items/items_auto_chess_zh-CN.json";
-import { DACItem, DACExtendedItem } from "./items/item";
+import { DACExtendedItem } from "./items/item";
 
 import GridItem from "./components/GridItem";
 
-function getExtendedRecipe(
-  item: DACItem,
-  idToItemMap: Map<number, DACItem>
-): number[] {
-  return [
-    ...item.recipe,
-    ...item.recipe.reduce((all: number[], id: number) => {
-      if (idToItemMap.has(id)) {
-        all.push(...getExtendedRecipe(idToItemMap.get(id)!, idToItemMap));
-      }
-      return all;
-    }, []),
-  ];
-}
+const canAssembleItem = (availableIds: number[], extendedRecipe: number[]) => {
+  if (availableIds.length === 0) return false;
+  return extendedRecipe.reduce((available: boolean, id: number) => {
+    return available && availableIds.includes(id);
+  }, true);
+};
 
 function Grid() {
-  const itemsData = useMemo<Array<DACItem>>(() => itemsDataCN, []);
-  const idToItemMap = useMemo<Map<number, DACItem>>(() => {
+  const itemsData = useMemo<Array<DACExtendedItem>>(
+    () =>
+      itemsDataCN.map((i) => ({
+        ...i,
+        extendedRecipe: i.extendedRecipe || [i.id],
+      })),
+    []
+  );
+  const idToItemMap = useMemo<Map<number, DACExtendedItem>>(() => {
     const itemMap = new Map();
     itemsData.forEach((item) => itemMap.set(item.id, item));
     return itemMap;
@@ -32,10 +31,7 @@ function Grid() {
   const itemsGroupByTier = useMemo(() => {
     return itemsData.reduce(
       (group, item) => {
-        group.get(item.tier)?.push({
-          ...item,
-          extendedRecipe: getExtendedRecipe(item, idToItemMap),
-        });
+        group.get(item.tier)?.push(item);
         return group;
       },
       new Map<number, DACExtendedItem[]>([
@@ -47,22 +43,37 @@ function Grid() {
         [5, []],
       ])
     );
-  }, [idToItemMap, itemsData]);
+  }, [itemsData]);
 
-  const [selectedItem, setSelectedItem] = useState<DACItem | null>(null);
+  const [selectedItem, setSelectedItem] = useState<DACExtendedItem | null>(
+    null
+  );
   const [obtainedItemIds, setObtainedItemIds] = useState<number[]>([]);
+  const [disassembledItemIds, setOptimizedItemIds] = useState<number[]>([]);
 
   const tierList = [1, 2, 3, 4, 5];
 
   const handleItemClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    item: DACItem
+    item: DACExtendedItem
   ) => {
     if (selectedItem && selectedItem.id === item.id) {
       setSelectedItem(null);
     } else {
       setSelectedItem(item);
     }
+  };
+
+  const getOptimizedItemIds = (
+    ids: number[],
+    idToItemMap: Map<number, DACExtendedItem>
+  ): number[] => {
+    const disassembledIds = ids.reduce((all: number[], id) => {
+      all.push(...idToItemMap.get(id)!.extendedRecipe);
+      return all;
+    }, []);
+
+    return disassembledIds;
   };
 
   const handleAction = (action: ReactText) => {
@@ -75,16 +86,17 @@ function Grid() {
         newIds.splice(index, 1);
         setObtainedItemIds(newIds);
       }
+    } else if (action === "optimise") {
+      const newItems = getOptimizedItemIds(obtainedItemIds, idToItemMap);
+      setOptimizedItemIds(newItems);
+    } else if (action === "clear") {
+      setOptimizedItemIds([]);
     }
   };
 
-  useEffect(() => {
-    console.log(obtainedItemIds);
-  }, [obtainedItemIds]);
-
-  const getObtainedItems = () => {
-    if (obtainedItemIds.length) {
-      return obtainedItemIds.map((id, index) => {
+  const renderItemsFromId = (ids: number[], emptyMessage?: string) => {
+    if (ids.length) {
+      return ids.map((id, index) => {
         const obtainedItem = idToItemMap.get(id)!;
         return (
           <GridItem
@@ -98,20 +110,30 @@ function Grid() {
         );
       });
     } else {
-      return "Nothing yet. Good luck. 🥳";
+      return emptyMessage;
     }
   };
 
   return (
     <div>
       <h4>Obtained items</h4>
-      <div style={{ display: "flex" }}>{getObtainedItems()}</div>
+      <div style={{ display: "flex" }}>
+        {renderItemsFromId(obtainedItemIds, "Nothing yet. Good luck. 🥳")}
+      </div>
+      <div>
+        <ActionGroup onAction={handleAction}>
+          <Item key="optimise">Optimise</Item>
+          <Item key="clear">Clear</Item>
+        </ActionGroup>
+      </div>
+      {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {renderItemsFromId(disassembledItemIds)}
+      </div> */}
       <h4>Select items below</h4>
       <div>
         <ActionGroup onAction={handleAction}>
           <Item key="add">Add</Item>
           <Item key="remove">Remove</Item>
-          {/* <Item key="optimise">Optimise</Item> */}
         </ActionGroup>
       </div>
       <div style={{ display: "flex", flexDirection: "row" }}>
@@ -130,6 +152,10 @@ function Grid() {
                     item.id === selectedItem?.id ||
                     item.extendedRecipe.includes(selectedItem?.id || 0)
                   }
+                  available={canAssembleItem(
+                    disassembledItemIds,
+                    item.extendedRecipe
+                  )}
                 />
               );
             })}
