@@ -8,9 +8,18 @@ import GridItem from "./components/GridItem";
 
 const canAssembleItem = (availableIds: number[], extendedRecipe: number[]) => {
   if (availableIds.length === 0) return false;
-  return extendedRecipe.reduce((available: boolean, id: number) => {
-    return available && availableIds.includes(id);
-  }, true);
+  const remainingIds = [...availableIds];
+
+  for (let i = 0; i < extendedRecipe.length; i++) {
+    const idToCheck = extendedRecipe[i];
+    const index = remainingIds.indexOf(idToCheck);
+    if (index > -1) {
+      remainingIds.splice(index, 1);
+    } else {
+      return false;
+    }
+  }
+  return true;
 };
 
 function Grid() {
