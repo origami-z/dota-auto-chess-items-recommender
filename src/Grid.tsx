@@ -1,12 +1,19 @@
-import { ReactText, useMemo, useState } from "react";
-import { ActionGroup, Item, ToggleButton } from "@adobe/react-spectrum";
+import { useMemo, useState } from "react";
+import {
+  ContextMenu,
+  MenuItem,
+  ContextMenuTrigger,
+  MenuItemProps,
+} from "react-contextmenu";
 
 import itemsDataCN from "./items/items_auto_chess_zh-CN.json";
-import { DACExtendedItem } from "./items/item";
+import { DACExtendedItem, DACItem } from "./items/item";
 
 import GridItem from "./components/GridItem";
 
 import classes from "./Grid.module.css";
+
+const CONTEXT_MENU_ID = "CONTEXT_MENU_ID";
 
 const canAssembleItem = (availableIds: number[], extendedRecipe: number[]) => {
   if (availableIds.length === 0) return false;
@@ -88,16 +95,18 @@ function Grid() {
     return disassembledIds;
   };
 
-  const handleAction = (action: ReactText) => {
-    if (action === "add" && selectedItem) {
-      setObtainedItemIds([...obtainedItemIds, selectedItem.id]);
-    } else if (action === "remove" && selectedItem) {
-      const index = obtainedItemIds.indexOf(selectedItem.id);
+  const handleItemChange = (action: "add" | "remove", item: DACItem) => {
+    if (action === "add") {
+      setObtainedItemIds([...obtainedItemIds, item.id]);
+    } else if (action === "remove") {
+      const index = obtainedItemIds.indexOf(item.id);
       if (index > -1) {
         const newIds = [...obtainedItemIds];
         newIds.splice(index, 1);
         setObtainedItemIds(newIds);
       }
+    } else if (action === "clear") {
+      setObtainedItemIds([]);
     }
   };
 
@@ -111,14 +120,22 @@ function Grid() {
       return ids.map((id, index) => {
         const obtainedItem = idToItemMap.get(id)!;
         return (
-          <GridItem
-            key={`obtained-item-${index}`}
-            onClick={handleItemClick}
-            item={obtainedItem}
-            idToItemMap={idToItemMap}
-            highlight={obtainedItem.id === selectedItem?.id}
-            hideDetails
-          />
+          <ContextMenuTrigger
+            key={`grid-item-trigger-${index}`}
+            id={CONTEXT_MENU_ID}
+            collect={(props) => {
+              return { ...props, item: obtainedItem };
+            }}
+          >
+            <GridItem
+              key={`obtained-item-${index}`}
+              onClick={handleItemClick}
+              item={obtainedItem}
+              idToItemMap={idToItemMap}
+              highlight={obtainedItem.id === selectedItem?.id}
+              hideDetails
+            />
+          </ContextMenuTrigger>
         );
       });
     } else {
@@ -126,35 +143,28 @@ function Grid() {
     }
   };
 
-  const togglePossibility = (newValue: boolean) => {
-    setSelectedItem(null);
-    setShowPossibility(newValue);
+  const handleContextMenuClick: MenuItemProps["onClick"] = (e, data) => {
+    const { action, item } = data as any;
+    handleItemChange(action, item);
   };
+
+  const togglePossibility = () => {
+    // setSelectedItem(null);
+    setShowPossibility((preValue) => !preValue);
+  };
+
+  const visibilityToggleText =
+    (showPossibility ? "Hide" : "Show") + " Possibility";
 
   return (
     <>
       <div>
         <h4>Obtained items</h4>
         <div className={classes.obtainedItems}>
-          {renderItemsFromId(obtainedItemIds, "Nothing yet. Good luck. 🥳")}
-        </div>
-        <div>
-          <ToggleButton isEmphasized onChange={togglePossibility}>
-            {showPossibility ? "Hide" : "Show"} Possibility
-          </ToggleButton>
-        </div>
-        {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {renderItemsFromId(disassembledItemIds)}
-      </div> */}
-        <h4>Select an item below</h4>
-        <div>
-          <ActionGroup
-            onAction={handleAction}
-            isDisabled={selectedItem === null}
-          >
-            <Item key="add">Add</Item>
-            <Item key="remove">Remove</Item>
-          </ActionGroup>
+          {renderItemsFromId(
+            obtainedItemIds,
+            "Nothing yet. Right click items below to add. Good luck. 🥳"
+          )}
         </div>
       </div>
       <div
@@ -171,22 +181,61 @@ function Grid() {
             {itemsGroupByTier.get(tier)?.map((item, index) => {
               if (item.hidden) return null;
               return (
-                <GridItem
-                  key={`grid-item-${index}`}
-                  onClick={handleItemClick}
-                  item={item}
-                  idToItemMap={idToItemMap}
-                  selected={item.id === selectedItem?.id}
-                  highlight={item.extensions.includes(selectedItem?.id || 0)}
-                  available={
-                    showPossibility &&
-                    canAssembleItem(disassembledItemIds, item.extendedRecipe)
-                  }
-                />
+                <ContextMenuTrigger
+                  key={`grid-item-trigger-${index}`}
+                  id={CONTEXT_MENU_ID}
+                  collect={(props) => {
+                    return { ...props, item };
+                  }}
+                >
+                  <GridItem
+                    key={`grid-item-${index}`}
+                    onClick={handleItemClick}
+                    item={item}
+                    idToItemMap={idToItemMap}
+                    selected={item.id === selectedItem?.id}
+                    highlight={item.extensions.includes(selectedItem?.id || 0)}
+                    available={
+                      showPossibility &&
+                      canAssembleItem(disassembledItemIds, item.extendedRecipe)
+                    }
+                  />
+                </ContextMenuTrigger>
               );
             })}
           </div>
         ))}
+        <ContextMenu id={CONTEXT_MENU_ID} className={classes.contextMenu}>
+          <MenuItem
+            data={{ action: "add" }}
+            onClick={handleContextMenuClick}
+            className={classes.contextMenuItem}
+          >
+            Add
+          </MenuItem>
+          <MenuItem
+            data={{ action: "remove" }}
+            onClick={handleContextMenuClick}
+            className={classes.contextMenuItem}
+          >
+            Remove
+          </MenuItem>
+          <MenuItem divider className={classes.contextMenuItemDivider} />
+          <MenuItem
+            data={{ action: "clear" }}
+            onClick={handleContextMenuClick}
+            className={classes.contextMenuItem}
+          >
+            Clear
+          </MenuItem>
+          <MenuItem
+            data={{ foo: "bar" }}
+            onClick={togglePossibility}
+            className={classes.contextMenuItem}
+          >
+            {visibilityToggleText}
+          </MenuItem>
+        </ContextMenu>
       </div>
     </>
   );

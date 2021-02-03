@@ -21,7 +21,7 @@ function App() {
         <Radio value="Grid">Grid</Radio>
       </RadioGroup> */}
       <div className="App">
-        <h1>Dota Auto Chess Items</h1>
+        {/* <h1>Dota Auto Chess Items</h1> */}
         {displayMode === "Table" ? <Table /> : <Grid />}
       </div>
     </Provider>

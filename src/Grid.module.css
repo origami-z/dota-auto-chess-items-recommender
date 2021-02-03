@@ -3,3 +3,60 @@
   margin-block-start: 1em;
   margin-block-end: 1em;
 }
+
+.contextMenu {
+  background: #0f1517;
+  color: white;
+
+  /* Below from react-contextmenu */
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  font-size: 16px;
+  margin: 2px 0 0;
+  min-width: 160px;
+  outline: none;
+  opacity: 0;
+  padding: 5px 0;
+  pointer-events: none;
+  text-align: left;
+  transition: opacity 250ms ease !important;
+}
+
+.contextMenuItem {
+  color: white;
+
+  /* Below from react-contextmenu-item */
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 3px 20px;
+  text-align: inherit;
+  white-space: nowrap;
+}
+
+.contextMenuItemDivider {
+  border-bottom: 1px solid
+    var(
+      --spectrum-alias-background-color-gray-400,
+      var(
+        --spectrum-global-color-gray-400,
+        var(--spectrum-semantic-gray-400-color-background)
+      )
+    );
+  cursor: inherit;
+  margin-bottom: 3px;
+  padding: 2px 0;
+}
+
+.contextMenuItem:hover {
+  background: var(
+    --spectrum-alias-background-color-gray-200,
+    var(
+      --spectrum-global-color-gray-200,
+      var(--spectrum-semantic-gray-200-color-background)
+    )
+  );
+}
