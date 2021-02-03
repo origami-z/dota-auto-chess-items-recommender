@@ -1,7 +1,12 @@
 .App {
   background: #0f1517;
   color: white;
-  padding: 32px;
+  padding: 0 32px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .image {

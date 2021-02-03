@@ -6,6 +6,8 @@ import { DACExtendedItem } from "./items/item";
 
 import GridItem from "./components/GridItem";
 
+import classes from "./Grid.module.css";
+
 const canAssembleItem = (availableIds: number[], extendedRecipe: number[]) => {
   if (availableIds.length === 0) return false;
   const remainingIds = [...availableIds];
@@ -130,27 +132,39 @@ function Grid() {
   };
 
   return (
-    <div>
-      <h4>Obtained items</h4>
-      <div style={{ display: "flex" }}>
-        {renderItemsFromId(obtainedItemIds, "Nothing yet. Good luck. 🥳")}
-      </div>
+    <>
       <div>
-        <ToggleButton isEmphasized onChange={togglePossibility}>
-          {showPossibility ? "Hide" : "Show"} Possibility
-        </ToggleButton>
-      </div>
-      {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <h4>Obtained items</h4>
+        <div className={classes.obtainedItems}>
+          {renderItemsFromId(obtainedItemIds, "Nothing yet. Good luck. 🥳")}
+        </div>
+        <div>
+          <ToggleButton isEmphasized onChange={togglePossibility}>
+            {showPossibility ? "Hide" : "Show"} Possibility
+          </ToggleButton>
+        </div>
+        {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
         {renderItemsFromId(disassembledItemIds)}
       </div> */}
-      <h4>Select an item below</h4>
-      <div>
-        <ActionGroup onAction={handleAction} isDisabled={selectedItem === null}>
-          <Item key="add">Add</Item>
-          <Item key="remove">Remove</Item>
-        </ActionGroup>
+        <h4>Select an item below</h4>
+        <div>
+          <ActionGroup
+            onAction={handleAction}
+            isDisabled={selectedItem === null}
+          >
+            <Item key="add">Add</Item>
+            <Item key="remove">Remove</Item>
+          </ActionGroup>
+        </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          overflowY: "auto",
+          minWidth: 850,
+        }}
+      >
         {tierList.map((tier: number) => (
           <div key={`tier-${tier}-column`} id={`tier-${tier}-column`}>
             <h2>Tier {tier}</h2>
@@ -174,7 +188,7 @@ function Grid() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
