@@ -4,6 +4,13 @@
   margin-block-end: 1em;
 }
 
+.itemLists {
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  min-width: 850px;
+}
+
 .contextMenu {
   background: #0f1517;
   color: white;

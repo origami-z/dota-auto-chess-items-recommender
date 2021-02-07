@@ -14,13 +14,13 @@ export interface DACItem {
    */
   extensions: Array<number>;
   /**
-   * Items id that this item could combine into
-   */
-  dependencyOf: Array<number>;
-  /**
    * Fully disassembled items id
    */
   extendedRecipe?: Array<number>;
+  /**
+   * Items id that this item could combine into
+   */
+  dependencyOf: Array<number>;
   hidden?: boolean;
 }
 

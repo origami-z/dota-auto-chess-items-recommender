@@ -167,14 +167,7 @@ function Grid() {
           )}
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          overflowY: "auto",
-          minWidth: 850,
-        }}
-      >
+      <div className={classes.itemLists}>
         {tierList.map((tier: number) => (
           <div key={`tier-${tier}-column`} id={`tier-${tier}-column`}>
             <h2>Tier {tier}</h2>

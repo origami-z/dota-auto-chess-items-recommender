@@ -4,6 +4,6 @@ import App from "./App";
 
 test("renders title", () => {
   render(<App />);
-  const titleElement = screen.getByText(/Dota Auto Chess Items/i);
-  expect(titleElement).toBeInTheDocument();
+  const textElement = screen.getByText(/Obtained items/i);
+  expect(textElement).toBeInTheDocument();
 });
