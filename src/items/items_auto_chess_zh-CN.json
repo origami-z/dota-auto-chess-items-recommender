@@ -156,7 +156,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/moon_shard_lg.png",
     "id": 247,
-    "tier": 4
+    "tier": 3
   },
   {
     "localized_name": "Robe of the Magi",
@@ -213,7 +213,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/blade_of_alacrity_lg.png",
     "id": 22,
-    "tier": 2
+    "tier": 1
   },
   {
     "localized_name": "Staff of Wizardry",
@@ -490,7 +490,7 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/energy_booster_lg.png",
     "id": 59,
-    "tier": 2
+    "tier": 1
   },
   {
     "localized_name": "Vitality Booster",
@@ -504,7 +504,7 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/vitality_booster_lg.png",
     "id": 61,
-    "tier": 2
+    "tier": 1
   },
   {
     "localized_name": "Hand of Midas",
@@ -943,7 +943,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/lesser_crit_lg.png",
     "id": 149,
-    "tier": 3
+    "tier": 2
   },
   {
     "localized_name": "Satanic",
@@ -1063,7 +1063,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/arcane_boots_lg.png",
     "id": 180,
-    "tier": 3
+    "tier": 2
   },
   {
     "localized_name": "Tranquil Boots",
@@ -1121,7 +1121,7 @@
     "side_shop": 0,
     "url_image": "static/items/达贡王冠.png",
     "id": 502,
-    "tier": 1
+    "tier": 2
   },
   {
     "localized_name": "召唤神石",
@@ -1136,7 +1136,7 @@
     "side_shop": 0,
     "url_image": "static/items/召唤神石.png",
     "id": 503,
-    "tier": 3
+    "tier": 2
   },
   {
     "localized_name": "Telescope",
