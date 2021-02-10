@@ -402,7 +402,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/reaver_lg.png",
     "id": 53,
-    "tier": 4
+    "tier": 3
   },
   {
     "localized_name": "Sacred Relic",
@@ -733,7 +733,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/black_king_bar_lg.png",
     "id": 116,
-    "tier": 4
+    "tier": 3
   },
   {
     "localized_name": "Shiva's Guard",
@@ -1003,7 +1003,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/maelstrom_lg.png",
     "id": 166,
-    "tier": 4
+    "tier": 3
   },
   {
     "localized_name": "Desolator",
@@ -1033,7 +1033,7 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/mask_of_madness_lg.png",
     "id": 172,
-    "tier": 3
+    "tier": 2
   },
   {
     "localized_name": "Diffusal Blade",
