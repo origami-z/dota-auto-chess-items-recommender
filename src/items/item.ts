@@ -1,4 +1,7 @@
-export interface DACItem {
+/**
+ * Source for items, can be used for computing other properties in `DACItem`
+ */
+export interface DACItemBase {
   localized_name: string;
   localized_name_zh: string;
   name: string;
@@ -6,22 +9,28 @@ export interface DACItem {
   id: number;
   tier: number;
   /**
-   * Direct recipe of items id
+   * Whether an item should be hidden in the tier list
+   */
+  hidden?: boolean;
+  /**
+   * Direct recipe of items id. What's shown in the game.
    */
   recipe: Array<number>;
+}
+export interface DACItem extends DACItemBase {
   /**
-   * Items id that could combine to this item
+   * Unique item ids that could combine into current item. Contains all decedents.
    */
   extensions: Array<number>;
   /**
-   * Fully disassembled items id
+   * Fully disassembled item ids for leaf items. Will be itself for leaf level items.
+   * Would contain duplicates to show number of items needed.
    */
   extendedRecipe?: Array<number>;
   /**
-   * Items id that this item could combine into
+   * Unique items id that this item could combine into. Contains all ascendent. Reverse idea of `extensions`.
    */
   dependencyOf: Array<number>;
-  hidden?: boolean;
 }
 
 export interface DACExtendedItem extends Omit<DACItem, "extendedRecipe"> {

@@ -11,7 +11,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/blink_lg.png",
     "id": 1,
-    "tier": 2
+    "tier": 2,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Blades of Attack",
@@ -40,7 +41,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/blades_of_attack_lg.png",
     "id": 2,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Broadsword",
@@ -54,7 +56,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/broadsword_lg.png",
     "id": 3,
-    "tier": 2
+    "tier": 2,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Chainmail",
@@ -68,7 +71,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/chainmail_lg.png",
     "id": 4,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Javelin",
@@ -92,7 +96,7 @@
     "recipe": [2, 2],
     "extendedRecipe": [2, 2],
     "extensions": [2],
-    "dependencyOf": [],
+    "dependencyOf": [54, 116, 133, 137, 145, 158, 166, 168, 506],
     "secret_shop": 0,
     "cost": 1600,
     "side_shop": 0,
@@ -127,7 +131,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/quarterstaff_lg.png",
     "id": 10,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Stout Shield",
@@ -141,7 +146,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/stout_shield_lg.png",
     "id": 182,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Moon Shard",
@@ -184,7 +190,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/robe_lg.png",
     "id": 19,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Ogre Axe",
@@ -198,7 +205,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/ogre_axe_lg.png",
     "id": 21,
-    "tier": 2
+    "tier": 2,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Blade of Alacrity",
@@ -212,7 +220,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/blade_of_alacrity_lg.png",
     "id": 22,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Staff of Wizardry",
@@ -256,7 +265,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/lifesteal_lg.png",
     "id": 26,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Ring of Regen",
@@ -285,7 +295,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/ring_of_regen_lg.png",
     "id": 27,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Boots of Speed",
@@ -299,7 +310,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/boots_lg.png",
     "id": 29,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Cloak",
@@ -313,7 +325,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/cloak_lg.png",
     "id": 31,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Talisman of Evasion",
@@ -327,7 +340,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/talisman_of_evasion_lg.png",
     "id": 32,
-    "tier": 2
+    "tier": 2,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Enchanted Mango",
@@ -341,7 +355,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/enchanted_mango_lg.png",
     "id": 216,
-    "tier": 0
+    "tier": 0,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Tango",
@@ -355,7 +370,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/tango_lg.png",
     "id": 44,
-    "tier": 0
+    "tier": 0,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Demon Edge",
@@ -459,7 +475,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/void_stone_lg.png",
     "id": 57,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Mystic Staff",
@@ -488,7 +505,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/energy_booster_lg.png",
     "id": 59,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Vitality Booster",
@@ -502,7 +520,8 @@
     "side_shop": 1,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/vitality_booster_lg.png",
     "id": 61,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Hand of Midas",
@@ -815,7 +834,7 @@
     "recipe": [31, 56, 27],
     "extendedRecipe": [31, 27, 27, 27],
     "extensions": [31, 56, 27],
-    "dependencyOf": [],
+    "dependencyOf": [90],
     "secret_shop": 0,
     "cost": 1700,
     "side_shop": 0,
@@ -1105,7 +1124,8 @@
     "side_shop": 0,
     "url_image": "http://cdn.dota2.com/apps/dota2/images/items/blight_stone_lg.png",
     "id": 501,
-    "tier": 1
+    "tier": 1,
+    "extendedRecipe": []
   },
   {
     "localized_name": "Crown",
@@ -1119,7 +1139,8 @@
     "side_shop": 0,
     "url_image": "static/items/达贡王冠.png",
     "id": 502,
-    "tier": 2
+    "tier": 2,
+    "extendedRecipe": []
   },
   {
     "localized_name": "召唤神石",
@@ -1187,7 +1208,7 @@
     "name": "item_weishijingjia",
     "recipe": [508, 180],
     "extendedRecipe": [4, 31, 27, 29, 59],
-    "extensions": [508, 180, 4, 31, 27, 29, 59],
+    "extensions": [508, 4, 31, 27, 180, 29, 59],
     "dependencyOf": [],
     "secret_shop": 0,
     "cost": 0,
