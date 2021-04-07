@@ -98,9 +98,12 @@ const idToItemMap = new Map();
 itemsDataCN.forEach((item) => idToItemMap.set(item.id, item));
 
 const idToExtendedRecipeMap = new Map();
-itemsDataCN.forEach((item) =>
-  idToExtendedRecipeMap.set(item.id, getExtendedRecipe(item, idToItemMap))
-);
+itemsDataCN.forEach((item) => {
+  const extendedRecipe = getExtendedRecipe(item, idToItemMap);
+  // For a leaf level item, we want extended recipe to be itself
+  if (extendedRecipe.length === 0) extendedRecipe.push(item.id);
+  idToExtendedRecipeMap.set(item.id, extendedRecipe);
+});
 
 console.log({ idToExtendedRecipeMap });
 

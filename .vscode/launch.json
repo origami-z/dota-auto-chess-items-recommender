@@ -5,9 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:3000/dota-auto-chess-items-recommender/",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch generateSource",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/scripts/generateSource.ts",
       "preLaunchTask": "tsc: build - tsconfig-scripts.json",
