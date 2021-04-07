@@ -5,7 +5,7 @@
  */
 
 const fs = require("fs");
-// const prettier = require("prettier");
+const prettier = require("prettier");
 
 /**
  * Source for items, can be used for computing other properties in `DACItem`
@@ -89,10 +89,10 @@ console.log("Processing items data, number of items", itemsDataCN.length);
 
 // console.log(itemsDataCN.filter((i) => !i.extendedRecipe));
 
-const itemsDataWithExtendedRecipe = itemsDataCN.map((i) => ({
-  ...i,
-  extendedRecipe: i.extendedRecipe || [i.id],
-}));
+// const itemsDataWithExtendedRecipe = itemsDataCN.map((i) => ({
+//   ...i,
+//   extendedRecipe: i.extendedRecipe || [i.id],
+// }));
 
 const idToItemMap = new Map();
 itemsDataCN.forEach((item) => idToItemMap.set(item.id, item));
@@ -102,7 +102,7 @@ itemsDataCN.forEach((item) =>
   idToExtendedRecipeMap.set(item.id, getExtendedRecipe(item, idToItemMap))
 );
 
-console.log({ itemToExtendedRecipeMap: idToExtendedRecipeMap });
+console.log({ idToExtendedRecipeMap });
 
 const idToExtensions = new Map();
 itemsDataCN.forEach((item) =>
@@ -112,7 +112,7 @@ itemsDataCN.forEach((item) =>
   )
 );
 
-console.log({ itemToExtensions: idToExtensions });
+console.log({ idToExtensions });
 
 /**
  * This generates `dependencyOf`
@@ -134,7 +134,7 @@ const idToDependencyOfMap = Array.from(idToExtensions.keys()).reduce(
 // "dependencyOf": [],
 console.log({ idToDependencyOfMap });
 
-debugger;
+// debugger;
 
 const finalData = itemsDataCN.map((item) => ({
   ...item,
@@ -144,5 +144,6 @@ const finalData = itemsDataCN.map((item) => ({
 }));
 
 const data = JSON.stringify(finalData);
-// const prettyData = prettier.format(data, {});
-fs.writeFileSync("./scripts/withExtendedRecipe.json", data);
+const prettyData = prettier.format(data, { parser: "json" });
+fs.writeFileSync("./src/items/items_auto_chess_zh-CN.json", prettyData);
+// fs.writeFileSync("./scripts/withExtendedRecipe.json", data);
