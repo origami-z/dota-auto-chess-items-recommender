@@ -3,7 +3,7 @@ name: Lighthouse
 on: [push]
 
 jobs:
-  test:
+  audit:
     runs-on: ubuntu-latest
 
     steps:
