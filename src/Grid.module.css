@@ -2,6 +2,7 @@
   display: flex;
   margin-block-start: 1em;
   margin-block-end: 1em;
+  flex-wrap: wrap;
 }
 
 .itemLists {
