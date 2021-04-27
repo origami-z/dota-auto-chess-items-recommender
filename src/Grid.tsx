@@ -153,7 +153,7 @@ function Grid() {
     setShowPossibility((preValue) => !preValue);
   };
 
-  const visibilityToggleText = (showPossibility ? "隐藏" : "显示") + " 可能性";
+  const visibilityToggleText = (showPossibility ? "隐藏" : "显示") + "可能性";
 
   return (
     <>
