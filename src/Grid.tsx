@@ -67,7 +67,7 @@ function Grid() {
     null
   );
   const [obtainedItemIds, setObtainedItemIds] = useState<number[]>([]);
-  const [showPossibility, setShowPossibility] = useState(false);
+  const [showPossibility, setShowPossibility] = useState(true);
   // const [disassembledItemIds, setOptimizedItemIds] = useState<number[]>([]);
 
   const tierList = [1, 2, 3, 4, 5];
