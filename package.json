@@ -2,7 +2,7 @@
   "name": "dota-auto-chess-items-recommender",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://origami-z.github.io/dota-auto-chess-items-recommender",
+  "homepage": "http://origami-z.github.io/dota-auto-chess-items-recommender/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

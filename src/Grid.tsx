@@ -153,24 +153,20 @@ function Grid() {
     setShowPossibility((preValue) => !preValue);
   };
 
-  const visibilityToggleText =
-    (showPossibility ? "Hide" : "Show") + " Possibility";
+  const visibilityToggleText = (showPossibility ? "隐藏" : "显示") + " 可能性";
 
   return (
     <>
       <div>
-        <h4>Obtained items</h4>
+        <h2>已有物品</h2>
         <div className={classes.obtainedItems}>
-          {renderItemsFromId(
-            obtainedItemIds,
-            "Nothing yet. Right click items below to add. Good luck. 🥳"
-          )}
+          {renderItemsFromId(obtainedItemIds, "右键物品添加，游戏好运 🥳")}
         </div>
       </div>
       <div className={classes.itemLists}>
         {tierList.map((tier: number) => (
           <div key={`tier-${tier}-column`} id={`tier-${tier}-column`}>
-            <h2>Tier {tier}</h2>
+            <h2>{tier}级</h2>
             {itemsGroupByTier.get(tier)?.map((item, index) => {
               if (item.hidden) return null;
               return (
@@ -204,14 +200,14 @@ function Grid() {
             onClick={handleContextMenuClick}
             className={classes.contextMenuItem}
           >
-            Add
+            添加
           </MenuItem>
           <MenuItem
             data={{ action: "remove" }}
             onClick={handleContextMenuClick}
             className={classes.contextMenuItem}
           >
-            Remove
+            移除
           </MenuItem>
           <MenuItem divider className={classes.contextMenuItemDivider} />
           <MenuItem
@@ -219,7 +215,7 @@ function Grid() {
             onClick={handleContextMenuClick}
             className={classes.contextMenuItem}
           >
-            Clear
+            清空
           </MenuItem>
           <MenuItem
             data={{ foo: "bar" }}
